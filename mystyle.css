@@ -1,264 +1,328 @@
-body {
-  overflow: hidden;
-  height: 500px;
-  position: relative;
-}
+ body {
+            overflow: hidden;
+            height: 500px;
+            position: relative;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #000;
+        }
+        
+        .controls {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            padding: 14px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            box-shadow: 
+                0 10px 20px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 10;
+            width: 220px;
+            transition: all 0.3s ease;
+        }
 
-.aquarium {
-  position: relative;
-  width: 1000px; 
-  height: 550px;   
-  border: 4px solid #00bcd4; /* viền khung */
-  border-radius: 16px;
-  background: linear-gradient(to bottom, #a2e6ff, #0077b7); 
-  overflow: hidden; 
-  margin: 50px auto; 
-  box-shadow: 0 0 30px rgba(0, 150, 200, 0.6);
-}
+        .controls:hover {
+            transform: translateY(-2px);
+            box-shadow: 
+                0 15px 25px rgba(0, 0, 0, 0.25),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.1);
+        }
 
-.aquarium div {
-  position: absolute;
-}
-.aquarium img {
-  width: 110px;
-  height: auto;
-  transition: transform 0.6s ease-in-out;
-}
+        .controls h3 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            color: #ffffff;
+            font-size: 13px;
+            font-weight: 700;
+            padding-bottom: 10px;
+            text-align: center;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
 
-#shark{
-  left:200px; top:300px;
-  position: absolute;
-  animation-name: shark;
-  animation-delay: 0s;
-  animation-duration: 14s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-play-state: running;
-}
+        .control-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            padding: 10px 12px;
+            border-radius: 12px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.05);
+        }
 
-#turtle{
-  left:100px; top:400px;
-  position: absolute;
-  animation-name: turtle;
-  animation: turtle 12s ease-in-out infinite;
-  animation-delay: 0s;
-  animation-duration: 40s;
-  animation-timing-function: ease;
-  animation-iteration-count: infinite;
-  animation-play-state: running;
-}
+        .control-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(4px);
+        }
 
-#goldFishSchool{
-  left:0px; top:400px;
-  position: absolute;
-  animation-name: goldFishSchool;
-  animation: goldFishSchool 12s ease-in-out infinite;
-  animation-delay: 0.02s;
-  animation-duration: 18s;
-  animation-timing-function: ease;
-  animation-iteration-count: infinite;
-  animation-play-state: running;
-}
+        .control-checkbox {
+            transform: scale(1.2);
+            accent-color: #22d3ee;
+            cursor: pointer;
+            margin-right: 12px;
+        }
 
-#faintSchool{
-  size: 300px;
-  left:100px; top:400px;
-  position: absolute;
-  animation-name: faintSchool;
-  animation-delay: 0s;
-  animation-duration: 23s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-play-state: running;
-}
+        .control-label {
+            flex-grow: 1;
+            font-weight: 500;
+            color: #ffffff;
+            transition: all 0.2s ease;
+            font-size: 12px;
+        }
 
+        .control-item:hover .control-label {
+            color: #a5f3fc;
+        }
 
-/* Mau xam */
-#diver1{
-  top: 100px;
-  animation: diver1 14s linear infinite;
-  left:100px; top:400px;
-  position: absolute;
-  animation-name: diver1;
-  animation-delay: 0s;
-  animation-duration: 40s;
-  animation-timing-function: ease;
-  animation-iteration-count: infinite;
-  animation-play-state: running;
-}
+        .music-controls {
+            margin: 20px 0;
+            text-align: center;
+        }
 
-/* Mau hong */
-#diver2{
-  top: 160px;
-  animation: diver2 16s linear infinite;
-  left:100px; top:400px;
-  position: absolute;
-  animation-name: diver2;
-  animation-delay: 0.08s;
-  animation-duration: 38s;
-  animation-timing-function: ease;
-  animation-iteration-count: infinite;
-  animation-play-state: running;
-}
+        .music-controls button {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
 
-/* Mau xanh la */
-#diver3{
-  top: 80px;
-  animation: diver3 15s linear infinite;
-  left:100px; top:400px;
-  position: absolute;
-  animation-name: diver3;
-  animation-delay: 0.03s;
-  animation-duration: 39s;
-  animation-timing-function: ease;
-  animation-iteration-count: infinite;
-  animation-play-state: running;
-}
+        .music-controls button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.15);
+        }
 
-#shark {animation-timing-function: cubic-bezier(0,0,1,1);}
-#turtle {animation-timing-function: cubic-bezier(0.25,0.1,0.25,1);}
-#diver3 {animation-timing-function: cubic-bezier(0.42,0,1,1);}
-#diver1 {animation-timing-function: cubic-bezier(0,0,0.58,1);}
-#diver2 {animation-timing-function: cubic-bezier(0.42,0,0.58,1);}
+        #playBtn {
+            font-size: 10px;
+            background: linear-gradient(135deg, 
+                rgba(34, 211, 238, 0.25) 0%, 
+                rgba(167, 139, 250, 0.25) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
 
+        .aquarium {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
 
-@keyframes shark {
-  0%   { left: 0px; top: 450px; transform: scaleX(1); }
-  45%  { left: 920px; top: 450px; transform: scaleX(1); } 
-  50%  { left: 920px; top: 450px; transform: scaleX(-1); } 
-  95%  { left: 0px; top: 450px; transform: scaleX(-1); } 
-  100% { left: 0px; top: 450px; transform: scaleX(1); } 
-}
+        .aquarium div {
+            position: absolute;
+        }
 
-@keyframes turtle {
-  0%   { left: 0px; top: 310px; transform: scaleX(1); }
-  45%  { left: 850px; top: 310px; transform: scaleX(1); }
-  50%  { left: 850px; top: 310px; transform: scaleX(-1); }
-  95%  { left: 0px; top: 300px; transform: scaleX(-1); }
-  100% { left: 0px; top: 300px; transform: scaleX(1); }
-}
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+            z-index: 1; 
+        }
 
-@keyframes goldFishSchool {
-  0% { left: 10px; top: 370px;transform: scaleX(1); }
-  49% { left: 800px; top: 370px;transform: scaleX(1); }
-  50% { left: 800px; top: 370px;transform: scaleX(-1); }
-  99% { left: 0px; top: 370px;transform: scaleX(-1); }
-  100% { left: 0px; top: 370px;transform: scaleX(1); }
-}
-.goldfish {
-  animation: goldFishSchool 10s ease-in-out infinite;
-  animation-delay: 2s;
-}
+        #shark{
+            left:200px; top:300px;
+            position: absolute;
+            animation: shark 18s linear infinite;
+            z-index: 5;
+        }
 
-@keyframes faintSchool {
-  0%   { left: -80px; top: 200px; transform: scaleX(1); }
-  45%  { left: 900px; top: 200px; transform: scaleX(1); }
-  50%  { left: 900px; top: 200px; transform: scaleX(-1); }
-  95%  { left: 10; top: 200px; transform: scaleX(-1); }
-  100% { left: 0px; top: 200px; transform: scaleX(1); }
-}
+        #turtle{
+            left:100px; top:400px;
+            position: absolute;
+            animation: turtle 40s ease infinite;
+            z-index: 5;
+        }
 
-/* Diver 1 (mau xam)*/
-@keyframes diver1 {
-  0%   { left: 0px; top: 140px; transform: scaleX(1) rotate(1deg); opacity: 0.95; }
-  10%  { left: 150px; top: 80px; transform: scaleX(1) rotate(1deg); } 
-  25%  { left: 350px; top: 180px; transform: scaleX(1) rotate(-2deg); }
-  40%  { left: 600px; top: 90px; transform: scaleX(1) rotate(0deg); }     
-  49%  { left: 880px; top: 200px; transform: scaleX(1); }                
-  50%  { left: 880px; top: 200px; transform: scaleX(-1) rotate(0deg); } 
-  60%  { left: 700px; top: 160px; transform: scaleX(-1) rotate(-1deg); }
-  75%  { left: 400px; top: 70px; transform: scaleX(-1) rotate(1deg); }  
-  90%  { left: 150px; top: 190px; transform: scaleX(-1) rotate(2deg); } 
-  99% { left: 0px; transform: scaleX(-1); }
-  100% { left: 0px; top: 140px; transform: scaleX(1) rotate(0deg); }
-}
+        #goldFishSchool{
+            left:0px; top:400px;
+            position: absolute;
+            animation: goldFishSchool 25s ease infinite;
+            z-index: 5;
+        }
 
-/* Diver 2 (mau hong) */
-@keyframes diver2 {
-  0%   { left: 0px; top: 230px; transform: scaleX(1) rotate(3deg); opacity: 0.95; }
-  15%  { left: 180px; top: 180px; transform: scaleX(1) rotate(2deg); }   
-  30%  { left: 350px; top: 120px; transform: scaleX(1) rotate(-2deg); }
-  45%  { left: 600px; top: 40px; transform: scaleX(1) rotate(0deg); }  
-  49%  { left: 880px; top: 100px; transform: scaleX(1); }              
-  50%  { left: 880px; top: 100px; transform: scaleX(-1); }                
-  60%  { left: 650px; top: 220px; transform: scaleX(-1) rotate(-1deg); }
-  75%  { left: 350px; top: 80px; transform: scaleX(-1) rotate(2deg); }  
-  90%  { left: 100px; top: 100px; transform: scaleX(-1) rotate(1deg); }  
-  99% { left: 0px; transform: scaleX(-1); } 
-  100% { left: 0px; top: 230px; transform: scaleX(1) rotate(0deg); }
-}
+        #faintSchool{
+            size: 300px;
+            left:100px; top:400px;
+            position: absolute;
+            animation: faintSchool 23s linear infinite;
+            z-index: 5;
+        }
+       /* 
+        #diver1{
+            top: 0px;
+            animation: diver1 25s linear infinite;
+            left:100px; top:400px;
+            position: absolute;
+            animation-name: diver1;
+            animation-delay: 0s;
+            animation-duration: 40s;
+            animation-timing-function: ease;
+            animation-iteration-count: infinite;
+            animation-play-state: running;
+            z-index: 5;
+        }
 
-/* Diver 3 (mau xanh la) */
-@keyframes diver3 {
-  0%   { left: 0px; top: 320px; transform: scaleX(1) rotate(-2deg); opacity: 0.95; }
-  10%  { left: 150px; top: 350px; transform: scaleX(1) rotate(1deg); } 
-  25%  { left: 350px; top: 240px; transform: scaleX(1) rotate(-2deg); }  
-  40%  { left: 450px; top: 370px; transform: scaleX(1) rotate(0deg); }   
-  49%  { left: 900px; top: 260px; transform: scaleX(1); }       
-  50%  { left: 900px; top: 260px; transform: scaleX(-1); }             
-  60%  { left: 700px; top: 380px; transform: scaleX(-1) rotate(-1deg); } 
-  75%  { left: 400px; top: 250px; transform: scaleX(-1) rotate(2deg); }   
-  90%  { left: 150px; top: 320px; transform: scaleX(-1) rotate(1deg); }  
-  99% { left: 0px; transform: scaleX(-1); }
-  100% { left: 0px; top: 370px; transform: scaleX(1) rotate(0deg); }
-}
+        #diver2{
+            top: 0px;
+            animation: diver2 25s linear infinite;
+            left:100px; top:400px;
+            position: absolute;
+            animation-name: diver2;
+            animation-delay: 0s;
+            animation-duration: 40s;
+            animation-timing-function: ease;
+            animation-iteration-count: infinite;
+            animation-play-state: running;
+            z-index: 5;
+        }
 
-.diver1 {
-  position: absolute;
-  top: 120px;
-  animation: diver1 34s ease infinite;
-}
+        #diver3{
+            top: 0px;
+            animation: diver3 20s linear infinite;
+            left:100px; top:400px;
+            position: absolute;
+            animation-name: diver3;
+            animation-delay: 0s;
+            animation-duration: 40s;
+            animation-timing-function: ease;
+            animation-iteration-count: infinite;
+            animation-play-state: running;
+            z-index: 5;
+        }*/
 
-.diver2 {
-  position: absolute;
-  top: 200px;
-  animation: diver2 36s ease infinite;
-}
+        @keyframes shark {
+            0%   { left: 0px; top: 450px; transform: scaleX(1); }
+            45%  { left: 1350px; top: 450px; transform: scaleX(1); } 
+            50%  { left: 1350px; top: 450px; transform: scaleX(-1); } 
+            95%  { left: 0px; top: 450px; transform: scaleX(-1); } 
+            100% { left: 0px; top: 450px; transform: scaleX(1); } 
+        }
 
-.diver3 {
-  position: absolute;
-  top: 300px;
-  animation: diver3 38s ease infinite;
-}
+        @keyframes turtle {
+            0%   { left: 0px; top: 310px; transform: scaleX(1); }
+            45%  { left: 1350px; top: 310px; transform: scaleX(1); }
+            50%  { left: 1350px; top: 310px; transform: scaleX(-1); }
+            95%  { left: 0px; top: 300px; transform: scaleX(-1); }
+            100% { left: 0px; top: 300px; transform: scaleX(1); }
+        }
 
+        @keyframes goldFishSchool {
+            0% { left: 10px; top: 370px;transform: scaleX(1); }
+            49% { left: 1350px; top: 370px;transform: scaleX(1); }
+            50% { left: 1350px; top: 370px;transform: scaleX(-1); }
+            99% { left: 0px; top: 370px;transform: scaleX(-1); }
+            100% { left: 0px; top: 370px;transform: scaleX(1); }
+        }
 
-/* Bong bong khi */
-@keyframes bubbles {
-  0% { transform: translateY(0) scale(1); opacity: 0.9; }
-  50% { transform: translateY(-60px) scale(1.1); opacity: 0.6; }
-  100% { transform: translateY(-120px) scale(0.8); opacity: 0; }
-}
+        @keyframes faintSchool {
+            0%   { left: -80px; top: 200px; transform: scaleX(1); }
+            45%  { left: 1350px; top: 210px; transform: scaleX(1); }
+            50%  { left: 1350px; top: 210px; transform: scaleX(-1); }
+            95%  { left: 10; top: 200px; transform: scaleX(-1); }
+            100% { left: 0px; top: 200px; transform: scaleX(1); }
+        }
 
-.bubbles {
-  position: absolute;
-  width: 6px;
-  height: 6px;
-  background: rgba(255,255,255,0.8);
-  border-radius: 50%;
-  animation: bubbles 3s ease infinite;
-  pointer-events: none;
-}
+        #diver1{
+            top: 0px;
+            animation: diver1 30s linear infinite;
+            left:100px; top:400px;
+            position: absolute;
+            animation-name: diver1;
+            animation-delay: 0s;
+            animation-duration: 50s;
+            animation-timing-function: ease;
+            animation-iteration-count: infinite;
+            animation-play-state: running;
+            z-index: 5;
+         }
 
-.bubble:nth-child(1) { width: 4px; height: 4px; animation-delay: 0s; }
-.bubble:nth-child(2) { width: 5px; height: 5px; animation-delay: 0.4s; }
-.bubble:nth-child(3) { width: 7px; height: 7px; animation-delay: 0.8s; }
-.bubble:nth-child(4) { width: 6px; height: 6px; animation-delay: 1.2s; }
-.bubble:nth-child(5) { width: 8px; height: 8px; animation-delay: 1.6s; }
+         @keyframes diver1 {
+            0%   { left: 1000px; top: 0px; transform: scaleX(1) rotate(0deg); opacity: 0.95; }
+            20%  { left: 1100px; top: 150px; transform: scaleX(1) rotate(2deg); } 
+            40%  { left: 1200px; top: 350px; transform: scaleX(1) rotate(-1deg); }
+            58%  { left: 1300px; top: 650px; transform: scaleX(1) rotate(-1deg); }
+            59%  { left: 1300px; top: 650px; transform: scaleX(-1) rotate(-1deg); }
+            60%  { left: 1300px; top: 650px; transform: scaleX(-1) rotate(-1deg); }
+            80%  { left: 1200px; top: 350px; transform: scaleX(-1) rotate(-1deg); }
+            90%  { left: 1100px; top: 150px; transform: scaleX(-1) rotate(0deg); }
+            98%  { left: 1000px; top: 0px; transform: scaleX(-1) rotate(0deg); }
+            99%  { left: 1000px; transform: scaleX(1); }
+            100% { left: 1000px; top: 0px; transform: scaleX(1) rotate(0deg); }
+         }
 
+         #diver2{
+            top: 0px;
+            animation: diver1 25s linear infinite;
+            left:100px; top:400px;
+            position: absolute;
+            animation-name: diver2;
+            animation-delay: 0s;
+            animation-duration: 45s;
+            animation-timing-function: ease;
+            animation-iteration-count: infinite;
+            animation-play-state: running;
+            z-index: 5;
+         }
 
-.diver {
-  position: absolute;
-  width: 60px;
-  height: 40px;
-  border-radius: 50% 30% 30% 50%;
-  opacity: 0.95;
-}
+         @keyframes diver2 {
+            0%   { left: 700px; top: 0px; transform: scaleX(1) rotate(0deg); opacity: 0.95; }
+            20%  { left: 800px; top: 150px; transform: scaleX(1) rotate(2deg); } 
+            40%  { left: 900px; top: 350px; transform: scaleX(1) rotate(-1deg); }
+            58%  { left: 1000px; top: 650px; transform: scaleX(1) rotate(-1deg); }
+            59%  { left: 1000px; top: 650px; transform: scaleX(-1) rotate(-1deg); }
+            60%  { left: 1000px; top: 650px; transform: scaleX(-1) rotate(-1deg); }
+            80%  { left: 900px; top: 350px; transform: scaleX(-1) rotate(-1deg); }
+            90%  { left: 800px; top: 150px; transform: scaleX(-1) rotate(0deg); }
+            98%  { left: 700px; top: 0px; transform: scaleX(-1) rotate(0deg); }
+            99%  { left: 700px; transform: scaleX(1); }
+            100% { left: 700px; top: 0px; transform: scaleX(1) rotate(0deg); }
+         }
 
-.diver1 { background: gray;  animation: diver1 36s ease-in-out infinite; }
-.diver2 { background: pink;  animation: diver2 38s ease-in-out infinite; }
-.diver3 { background: lightgreen; animation: diver3 40s ease-in-out infinite; }
+         #diver3{
+            top: 0px;
+            animation: diver1 20s linear infinite;
+            left:100px; top:400px;
+            position: absolute;
+            animation-name: diver3;
+            animation-delay: 0s;
+            animation-duration: 40s;
+            animation-timing-function: ease;
+            animation-iteration-count: infinite;
+            animation-play-state: running;
+            z-index: 6;
+         }
 
-/* Bong bong cho moi diver */
-.diver1 .bubbles {  top: 10px; left: 70px; animation-delay: 0s; }
-.diver2 .bubbles { top: 51px; left: 50px; animation-delay: 1s; }
-.diver3 .bubbles { top: 23px; left: 48px; animation-delay: 2s; }
+         @keyframes diver3 {
+            0%   { left: 400px; top: 0px; transform: scaleX(1) rotate(0deg); opacity: 0.95; }
+            20%  { left: 500px; top: 150px; transform: scaleX(1) rotate(2deg); } 
+            40%  { left: 600px; top: 350px; transform: scaleX(1) rotate(-1deg); }
+            58%  { left: 700px; top: 650px; transform: scaleX(1) rotate(-1deg); }
+            59%  { left: 700px; top: 650px; transform: scaleX(-1) rotate(-1deg); }
+            60%  { left: 700px; top: 650px; transform: scaleX(-1) rotate(-1deg); }
+            80%  { left: 600px; top: 350px; transform: scaleX(-1) rotate(-1deg); }
+            90%  { left: 500px; top: 150px; transform: scaleX(-1) rotate(0deg); }
+            98%  { left: 400px; top: 0px; transform: scaleX(-1) rotate(0deg); }
+            99%  { left: 400px; transform: scaleX(1); }
+            100% { left: 400px; top: 0px; transform: scaleX(1) rotate(0deg); }
+         }

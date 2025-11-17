@@ -1,36 +1,165 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <title>Hồ cá vui nhộn</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="mystyle.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="mystyle.css">
 </head>
 <body>
    <div class="controls">
+      <h3>Chọn Nhạc</h3>
+      <div class="control-item">
+         <input type="radio" name="music" id="song1" class="control-checkbox" checked>
+         <label for="song1" class="control-label">Nơi Này Có Anh</label>
+      </div>
+      <div class="control-item">
+         <input type="radio" name="music" id="song2" class="control-checkbox">
+         <label for="song2" class="control-label">Âm Thầm Bên Em</label>
+      </div>
+      <div class="control-item">
+         <input type="radio" name="music" id="song3" class="control-checkbox">
+         <label for="song3" class="control-label">Hãy Trao Cho Anh</label>
+      </div>
+      
+      <div class="music-controls">
+         <button id="playBtn">▶️ Phát nhạc</button>
+         <button id="pauseBtn">⏸️ Tạm dừng</button>
+      </div>
+      
       <h3>Chọn Cảnh</h3>
-      <label><input type="radio" name="bg" id="bg1" checked=""> Cảnh 1</label>
-      <label><input type="radio" name="bg" id="bg2"> Cảnh 2</label>
-      <label><input type="radio" name="bg" id="bg3"> Cảnh 3</label>
-   </div>
+      <div class="control-item">
+         <input type="radio" name="bg" id="bg1" class="control-checkbox" checked>
+         <label for="bg1" class="control-label">Cảnh 1</label>
+      </div>
+      <div class="control-item">
+         <input type="radio" name="bg" id="bg2" class="control-checkbox">
+         <label for="bg2" class="control-label">Cảnh 2</label>
+      </div>
+      <div class="control-item">
+         <input type="radio" name="bg" id="bg3" class="control-checkbox">
+         <label for="bg3" class="control-label">Cảnh 3</label>
+      </div>
+    </div>
 
     <div class="aquarium">
-    <img src="images/daybien1.jpg" class="background bg1" alt="Cảnh 1" style="display: block;">
-    <img src="images/daybien2.jpg" class="background bg2" alt="Cảnh 2" style="display: none;">
-    <img src="images/daybien3.jpg" class="background bg3" alt="Cảnh 3" style="display: none;">
-    <div id="content">
-    <div id="shark"><img src="images/shark.png"></div>
-    <div id="turtle"><img src="images/turtle.png"></div>
-    <div id="goldFishSchool"><img src="images/goldFishSchool.png"></div>
-    <div id="faintSchool"><img src="images/faintSchool.png"></div>
-    <div id="diver3"><img src="images/diver3.png">
-       <div class="bubbles"></div></div>
-    <div id="diver2"><img src="images/diver2.png">
-       <div class="bubbles"></div></div>
-    <div id="diver1"><img src="images/diver1.png">
-       <div class="bubbles"></div></div></div>
+        <img src="/images/daybien1.jpg" class="background bg1" alt="Cảnh 1" style="display: block;">
+        <img src="/images/daybien2.jpg" class="background bg2" alt="Cảnh 2" style="display: none;">
+        <img src="/images/daybien3.jpg" class="background bg3" alt="Cảnh 3" style="display: none;">
+        
+        <div id="content">
+            <div id="shark"><img src="/images/shark.png" alt="Cá mập" width="170px"></div>
+            <div id="turtle"><img src="/images/turtle.png" alt="Rùa biển" width="130px"></div>
+            <div id="goldFishSchool"><img src="/images/goldFishSchool.png" alt="Đàn cá vàng" width="90px"></div>
+            <div id="faintSchool"><img src="/images/faintSchool.png" alt="Đàn cá nhỏ" width="120px"></div>
+            <div id="diver3"><img src="/images/diver3.png" alt="Thợ lặn xanh" width="150px"></div>
+            <div id="diver2"><img src="/images/diver2.png" alt="Thợ lặn hồng" width="150px"></div>
+            <div id="diver1"><img src="/images/diver1.png" alt="Thợ lặn xám" width="150px"></div>
+        </div>
     </div>
-</div>
+   
+   <audio id="a1" loop>
+      <source src="audio/Nơi Này Có Anh.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="a2" loop>
+      <source src="audio/Âm Thầm Bên Em.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="a3" loop>
+      <source src="audio/Hãy Trao Cho Anh.mp3" type="audio/mpeg">
+    </audio>
+    
+    <script>
+      let isMusicPlaying = false;
+      let currentAudio = document.getElementById("a1");
+      
+      // Cập nhật trạng thái hiển thị
+      function updateButtonDisplay() {
+        const playBtn = document.getElementById('playBtn');
+        const pauseBtn = document.getElementById('pauseBtn');
+        
+        if (isMusicPlaying) {
+          playBtn.style.display = 'none';
+          pauseBtn.style.display = 'block';
+        } else {
+          playBtn.style.display = 'block';
+          pauseBtn.style.display = 'none';
+        }
+      }
+      
+      // Xử lý chuyển đổi cảnh nền
+      const backgrounds = document.querySelectorAll(".background");
+      const bgRadios = document.querySelectorAll('input[name="bg"]');
+      bgRadios.forEach((radio, index) => {
+        radio.addEventListener("change", () => {
+          backgrounds.forEach((bg, i) => {
+            bg.style.display = i === index ? "block" : "none";
+          });
+        });
+      });
+      
+      // Khởi tạo hiển thị cảnh nền
+      backgrounds.forEach((bg, i) => {
+        bg.style.display = i === 0 ? "block" : "none";
+      });
+      
+      // Xử lý chuyển đổi nhạc
+      const audios = [
+        document.getElementById("a1"),
+        document.getElementById("a2"),
+        document.getElementById("a3"),
+      ];
+      
+      // Dừng tất cả nhạc khi khởi động
+      audios.forEach(audio => {
+         audio.pause();
+         audio.currentTime = 0;
+      });
+      
+      const musicRadios = document.querySelectorAll('input[name="music"]');
+      musicRadios.forEach((radio, index) => {
+        radio.addEventListener("change", () => {
+          audios.forEach((audio, i) => {
+            if (i === index) {
+               currentAudio = audio;
+               if (isMusicPlaying) {
+                  audio.play();
+               }
+            } else {
+              audio.pause();
+              audio.currentTime = 0;
+            }
+          });
+        });
+      });
+      
+      // Xử lý nút phát nhạc
+      const playBtn = document.getElementById('playBtn');
+      playBtn.addEventListener('click', function() {
+        if (!isMusicPlaying) {
+          currentAudio.play()
+            .then(() => {
+              isMusicPlaying = true;
+              updateButtonDisplay();
+            })
+            .catch(error => {
+              console.error("Lỗi phát nhạc:", error);
+              document.getElementById('statusText').textContent = 'Lỗi phát nhạc';
+            });
+        }
+      });
+      
+      // Xử lý nút tạm dừng
+      const pauseBtn = document.getElementById('pauseBtn');
+      pauseBtn.addEventListener('click', function() {
+        if (isMusicPlaying) {
+          currentAudio.pause();
+          isMusicPlaying = false;
+          updateButtonDisplay();
+        }
+      });
+      
+      // Khởi tạo hiển thị nút
+      updateButtonDisplay();
+    </script>
 </body>
 </html>
